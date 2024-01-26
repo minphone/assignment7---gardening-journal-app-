@@ -3,26 +3,59 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/HomeFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.minphone.assignment7_gardeningjournalapp.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/HomeFragment"
+        android:name="com.minphone.assignment7_gardeningjournalapp.HomeFragment"
+        android:label="@string/home_fragment_label"
+        tools:layout="@layout/fragment_home">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_HomeFragment_to_GardenLogFragment"
+            app:destination="@id/GardenLogFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_AddPlantFragment"
+            app:destination="@id/AddPlantFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.minphone.assignment7_gardeningjournalapp.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/GardenLogFragment"
+        android:name="com.minphone.assignment7_gardeningjournalapp.GardenLogFragment"
+        android:label="@string/garden_log_fragment_label"
+        tools:layout="@layout/fragment_garden_log">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_GardenLogFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+
+        <action
+            android:id="@+id/action_GardenLogFragment_to_AddPlantFragment"
+            app:destination="@id/AddPlantFragment" />
+
+        <action
+            android:id="@+id/action_GardenLogFragment_to_PlantDetailFragment"
+            app:destination="@id/PlantDetailFragment" />
+
     </fragment>
+
+
+    <fragment
+        android:id="@+id/AddPlantFragment"
+        android:name="com.minphone.assignment7_gardeningjournalapp.AddPlantFragment"
+        android:label="@string/add_plant_fragment_label"
+        tools:layout="@layout/fragment_add_plant">
+
+        <action
+            android:id="@+id/action_AddPlantFragment_to_GardenLogFragment"
+            app:destination="@id/GardenLogFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/PlantDetailFragment"
+        android:name="com.minphone.assignment7_gardeningjournalapp.PlantDetailsFragment"
+        android:label="@string/plant_details_fragment_label"
+        tools:layout="@layout/fragment_plant_details" />
+
 </navigation>
