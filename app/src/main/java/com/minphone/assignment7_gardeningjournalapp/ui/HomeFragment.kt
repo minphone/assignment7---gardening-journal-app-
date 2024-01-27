@@ -1,4 +1,4 @@
-package com.minphone.assignment7_gardeningjournalapp
+package com.minphone.assignment7_gardeningjournalapp.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

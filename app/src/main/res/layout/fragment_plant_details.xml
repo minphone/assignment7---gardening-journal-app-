@@ -1,6 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/tvPlantName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:textFontWeight="900"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/labelPlantType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:text="Plant Type: "
+        android:textFontWeight="700"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPlantName" />
+
+    <TextView
+        android:id="@+id/labelWateringFrequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:text="Watering Frequency: "
+        android:textFontWeight="700"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labelPlantType" />
+
+    <TextView
+        android:id="@+id/labelPlantingDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:text="Planting Date: "
+        android:textFontWeight="700"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labelWateringFrequency" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="labelPlantType,labelWateringFrequency, labelPlantingDate" />
+
+    <TextView
+        android:id="@+id/tvPlantType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:textFontWeight="600"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        app:layout_constraintTop_toBottomOf="@id/tvPlantName" />
+
+    <TextView
+        android:id="@+id/tvWateringFrequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:textFontWeight="600"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        app:layout_constraintTop_toBottomOf="@id/tvPlantType" />
+
+    <TextView
+        android:id="@+id/tvPlantingDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:textFontWeight="600"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        app:layout_constraintTop_toBottomOf="@id/tvWateringFrequency" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

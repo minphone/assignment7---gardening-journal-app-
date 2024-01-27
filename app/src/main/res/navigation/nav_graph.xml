@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/HomeFragment"
-        android:name="com.minphone.assignment7_gardeningjournalapp.HomeFragment"
+        android:name="com.minphone.assignment7_gardeningjournalapp.ui.HomeFragment"
         android:label="@string/home_fragment_label"
         tools:layout="@layout/fragment_home">
 
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/GardenLogFragment"
-        android:name="com.minphone.assignment7_gardeningjournalapp.GardenLogFragment"
+        android:name="com.minphone.assignment7_gardeningjournalapp.ui.GardenLogFragment"
         android:label="@string/garden_log_fragment_label"
         tools:layout="@layout/fragment_garden_log">
 
@@ -42,7 +42,7 @@
 
     <fragment
         android:id="@+id/AddPlantFragment"
-        android:name="com.minphone.assignment7_gardeningjournalapp.AddPlantFragment"
+        android:name="com.minphone.assignment7_gardeningjournalapp.ui.AddPlantFragment"
         android:label="@string/add_plant_fragment_label"
         tools:layout="@layout/fragment_add_plant">
 
@@ -54,8 +54,14 @@
 
     <fragment
         android:id="@+id/PlantDetailFragment"
-        android:name="com.minphone.assignment7_gardeningjournalapp.PlantDetailsFragment"
+        android:name="com.minphone.assignment7_gardeningjournalapp.ui.PlantDetailsFragment"
         android:label="@string/plant_details_fragment_label"
-        tools:layout="@layout/fragment_plant_details" />
+        tools:layout="@layout/fragment_plant_details">
+
+        <argument
+            android:name="plantId"
+            app:argType="integer" />
+
+    </fragment>
 
 </navigation>

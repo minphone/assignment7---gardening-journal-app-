@@ -1,22 +1,22 @@
-package com.minphone.assignment7_gardeningjournalapp
+package com.minphone.assignment7_gardeningjournalapp.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.minphone.assignment7_gardeningjournalapp.databinding.FragmentPlantDetailsBinding
+import com.minphone.assignment7_gardeningjournalapp.databinding.FragmentAddPlantBinding
 
-class PlantDetailsFragment : Fragment() {
+class AddPlantFragment : Fragment() {
 
-      private var binding: FragmentPlantDetailsBinding? = null
+      private var binding: FragmentAddPlantBinding? = null
 
       override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
       ): View {
-            binding = FragmentPlantDetailsBinding.inflate(layoutInflater)
+            binding = FragmentAddPlantBinding.inflate(layoutInflater)
             return binding!!.root
       }
 
