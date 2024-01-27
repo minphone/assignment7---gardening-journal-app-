@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.minphone.assignment7_gardeningjournalapp.adapter.AdapterClickListener
 import com.minphone.assignment7_gardeningjournalapp.adapter.PlantRecyclerAdapter
 import com.minphone.assignment7_gardeningjournalapp.databinding.FragmentGardenLogBinding
 import com.minphone.assignment7_gardeningjournalapp.model.Plant
+import com.minphone.assignment7_gardeningjournalapp.viewModel.GardenLogViewModel
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -19,6 +22,7 @@ class GardenLogFragment : Fragment() {
       private var _binding: FragmentGardenLogBinding? = null
       private val binding get() = _binding!!
 
+      private lateinit var viewModel: GardenLogViewModel
 
       override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -32,47 +36,24 @@ class GardenLogFragment : Fragment() {
       override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
 
-            val samplePlants = mutableListOf<Plant>()
+            viewModel = ViewModelProvider(this)[GardenLogViewModel::class.java]
 
-            // Add sample plants
-            samplePlants.add(
-                  Plant(
-                        id = 100,
-                        name = "Rose",
-                        type = "Flower",
-                        wateringFrequency = 2,
-                        plantingDate = "2023-01-01"
-                  )
-            )
-            samplePlants.add(
-                  Plant(
-                        id = 101,
-                        name = "Tomato",
-                        type = "Vegetable",
-                        wateringFrequency = 3,
-                        plantingDate = "2023-02-15"
-                  )
-            )
-            samplePlants.add(
-                  Plant(
-                        id = 102,
-                        name = "Basil",
-                        type = "Herb",
-                        wateringFrequency = 1,
-                        plantingDate = "2023-03-10"
-                  )
-            )
-
-            val adapter = PlantRecyclerAdapter(samplePlants, object : AdapterClickListener {
-                  override fun onItemClicked(plantId: Int) {
-                        findNavController().navigate(
-                              GardenLogFragmentDirections.actionGardenLogFragmentToPlantDetailFragment(
-                                    plantId = plantId
+            viewModel.plants.observe(viewLifecycleOwner) { plants ->
+                  val adapter = PlantRecyclerAdapter(plants, object : AdapterClickListener {
+                        override fun onItemClicked(plantId: Int) {
+                              findNavController().navigate(
+                                    GardenLogFragmentDirections.actionGardenLogFragmentToPlantDetailFragment(
+                                          plantId = plantId
+                                    )
                               )
-                        )
-                  }
-            })
-            binding.rvPlant.adapter = adapter
+                        }
+                  })
+                  binding.rvPlant.adapter = adapter
+            }
+
+            binding.btnAddNewPlant.setOnClickListener {
+                  findNavController().navigate(GardenLogFragmentDirections.actionGardenLogFragmentToAddPlantFragment())
+            }
       }
 
       override fun onDestroyView() {

@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.minphone.assignment7_gardeningjournalapp.databinding.FragmentPlantDetailsBinding
+import com.minphone.assignment7_gardeningjournalapp.viewModel.PlantDetailsViewModel
 
 class PlantDetailsFragment : Fragment() {
 
@@ -14,6 +16,8 @@ class PlantDetailsFragment : Fragment() {
       private val binding get() = _binding!!
 
       private val args: PlantDetailsFragmentArgs by navArgs()
+
+      private lateinit var viewModel: PlantDetailsViewModel
 
       override fun onCreateView(
             inflater: LayoutInflater,
@@ -27,11 +31,17 @@ class PlantDetailsFragment : Fragment() {
       override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
 
+            viewModel = ViewModelProvider(this)[PlantDetailsViewModel::class.java]
+
             val plantId = args.plantId
-            binding.tvPlantName.text = "Rose"
-            binding.tvPlantType.text = "Flower"
-            binding.tvPlantingDate.text = "12-12-2023"
-            binding.tvWateringFrequency.text = "3 days"
+            viewModel.getPlantById(plantId)
+
+            viewModel.plant.observe(viewLifecycleOwner){plant ->
+                  binding.tvPlantName.text = plant.name
+                  binding.tvPlantType.text = plant.type
+                  binding.tvPlantingDate.text = plant.plantingDate
+                  binding.tvWateringFrequency.text = "${plant.wateringFrequency} days"
+            }
       }
 
       override fun onDestroy() {

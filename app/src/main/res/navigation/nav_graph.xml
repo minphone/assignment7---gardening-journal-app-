@@ -48,7 +48,9 @@
 
         <action
             android:id="@+id/action_AddPlantFragment_to_GardenLogFragment"
-            app:destination="@id/GardenLogFragment" />
+            app:destination="@id/GardenLogFragment"
+            app:popUpTo="@id/HomeFragment"
+            app:popUpToInclusive="true" />
 
     </fragment>
 
